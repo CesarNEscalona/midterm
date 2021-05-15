@@ -34,7 +34,16 @@ $f3->route('GET|POST /survey', function($f3){
 
     //If the form has been submitted, grab the data
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $userName = $_POST['name'];
+        $_SESSION['name'] = $_POST['name'];
+        // $userName = $_POST['name'];
+
+        if (!empty($_POST['options'])) {
+            // Get user input and assign it to the variable
+            $userOptions = $_POST['options'];
+            //If options are valid
+            $_SESSION['options'] = $userOptions;
+        }
+        header('location: summary');
     }
 
     //Get the options from the Model and send them to the View
@@ -44,9 +53,16 @@ $f3->route('GET|POST /survey', function($f3){
     $f3->set('userOptions', $userOptions);
     $f3->set('userName', $userName);
 
-    // Display the home page
+    // Display the survey page
     $view = new Template();
     echo $view->render('views/survey.html');
+});
+
+$f3->route('GET /summary', function () {
+
+    //Display the summary
+    $view = new Template();
+    echo $view->render('views/summary.html');
 });
 
 // Run Fat-Free
