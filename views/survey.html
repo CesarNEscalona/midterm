@@ -20,7 +20,12 @@
 
             <h4 class="display-5">Name: </h4>
             <input class="form-control" type="text" name="name" id="name"
-                   value="{{ @userName }}"><br>
+                   value="{{ @userName }}">
+            <check if="{{ isset(@errors['name']) }}">
+                <!-- add styles -->
+                <span class="err">{{ @errors['name'] }}</span>
+            </check>
+            <br>
 
             <h4 class="display-5">Check all that apply: </h4>
 
@@ -32,6 +37,10 @@
                     </check>
                     > {{ ucFirst(@option) }}</label><br>
             </repeat>
+            <check if="{{ isset(@errors['options']) }}">
+                <!-- add styles -->
+                <span class="err">{{ @errors['options'] }}</span>
+            </check>
         </div>
 
         <div class="col-md-12"><br><br>
