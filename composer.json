@@ -1,0 +1,12 @@
+{
+  "name" : "cescalona/328/midterm",
+  "authors": [
+    {
+      "name": "Cesar Escalona",
+      "email": "cescalona@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
