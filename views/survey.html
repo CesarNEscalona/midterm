@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Midterm Survey</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container bg-light">
+    <h1>Midterm Survey</h1>
+    <form action="#" method="post" class="form">
+        <div class="col-md-4">
+
+            <h4 class="display-5">Name: </h4>
+            <input class="form-control" type="text" name="name" id="name"
+                   value="{{ @userName }}"><br>
+
+            <h4 class="display-5">Check all that apply: </h4>
+
+            <repeat group="{{ @options }}" value="{{ @option }}">
+                <label><input type="checkbox"
+                              name="options[]"
+                              value="{{ @option }}"
+                    <check if="{{ in_array(@option, @userOptions) }}">checked="checked"
+                    </check>
+                    > {{ ucFirst(@option) }}</label><br>
+            </repeat>
+        </div>
+
+        <div class="col-md-12"><br><br>
+            <div class="text-left">
+                <input class="btn btn-primary"
+                       type="submit" value="Submit">
+                <br> <br>
+            </div> <!-- End of button -->
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
